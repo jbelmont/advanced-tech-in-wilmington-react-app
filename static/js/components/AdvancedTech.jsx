@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link, IndexLink } from 'react-router';
 
-import { Button, Radio, FormGroup, FormControl, ControlLabel, HelpBlock, FieldGroup } from 'react-bootstrap/lib';
+import { Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap/lib';
 
 import Users from './Users.jsx';
 
@@ -15,7 +14,7 @@ class AdvancedTech extends Component {
       users: this.props.users,
       showAddPopDown: false,
       genderValue: 'Male'
-    }
+    };
     this.togglePopDown = this.togglePopDown.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -47,7 +46,7 @@ class AdvancedTech extends Component {
     const lastName = document.getElementById('lastNameInput') && document.getElementById('lastNameInput').value;
     const select = document.getElementById('genderSelect');
     const gender = select.options[select.selectedIndex].value;
-    const id = Math.max.apply(Math, this.state.users.map(user => user["id"])) + 1;
+    const id = Math.max.apply(Math, this.state.users.map(user => user['id'])) + 1;
     const newUser = {
       email,
       firstName,
@@ -87,7 +86,7 @@ class AdvancedTech extends Component {
             {help && <HelpBlock>{help}</HelpBlock>}
           </FormGroup>
         );
-      }
+      };
 
       FormInstance = (
         <form onSubmit={this.addUser}>
@@ -123,11 +122,11 @@ class AdvancedTech extends Component {
 
     const UserArea = (
         users.map(info =>
-            <Users  email={info["email"]}
-              first_name={info["first_name"]}
-              last_name={info["last_name"]}
-              gender={info["gender"]}
-              id={info["id"]}
+            <Users  email={info['email']}
+              first_name={info['first_name']}
+              last_name={info['last_name']}
+              gender={info['gender']}
+              id={info['id']}
               props={this.props}
               onClick={this.props.getUserInfo}
             />
