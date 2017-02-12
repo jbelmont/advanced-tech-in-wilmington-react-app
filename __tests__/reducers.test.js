@@ -1,6 +1,6 @@
 import usersReducer from '../static/js/reducers/users';
 import userInformationReducer from '../static/js/reducers/userDetailInformation';
-import * as types from '../static/js/constants/constants';
+import * as types from '../static/js/constants';
 
 describe('Test all the reducers', () => {
   let ADD_USER_DETAIL_INFO,

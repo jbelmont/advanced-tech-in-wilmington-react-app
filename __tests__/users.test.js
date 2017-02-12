@@ -3,6 +3,7 @@ import Users from '../static/js/components/Users.jsx';
 import renderer from 'react-test-renderer';
 
 test('Test the <Users /> component', () => {
+  const props = [];
   const component = renderer.create(
     <Users
       email="johnrambo@badass.net"
@@ -10,7 +11,7 @@ test('Test the <Users /> component', () => {
       last_name="Rambo"
       gender="Male"
       id="1"
-      props=""
+      props={props}
       onClick={() => {}}
     />,
     );
