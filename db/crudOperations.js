@@ -1,4 +1,4 @@
-"use strict";
+
 
 const rethinkdb = require('rethinkdb');
 const winston = require('winston');
@@ -7,24 +7,24 @@ const DB = {
   DATABASE_NAME: process.env.DATABASE_NAME || 'trianglereactjs',
   TABLE_NAME: process.env.TABLE_NAME || 'users',
   port: process.env.DB_PORT || 28015,
-  connection: process.env["connection"] || null,
+  connection: process.env.connection || null,
   host: process.env.DB_HOST || 'localhost'
 };
 
 function connectToRethinkDBServer() {
-    return rethinkdb
+  return rethinkdb
         .connect({
-            host : DB.host,
-            port : DB.port,
-            db: DB.DATABASE_NAME
+          host: DB.host,
+          port: DB.port,
+          db: DB.DATABASE_NAME
         })
-        .then(connect => {
-          DB.connection = connect
+        .then((connect) => {
+          DB.connection = connect;
           return connect;
         })
         .catch((error) => {
-            winston.log('error', 'Database Connection Error', {error});
-            return error;
+          winston.log('error', 'Database Connection Error', { error });
+          return error;
         });
 }
 
@@ -35,24 +35,18 @@ function getUserById(connect, id) {
       id: Number(id)
     })
     .run(connect)
-    .then(cursor => {
-      return cursor
+    .then(cursor => cursor
         .toArray()
-        .then(values => {
-          return values[0];
-        })
-    });  
+        .then(values => values[0]));
 }
 
-function crudAction({method, id}) {
-  switch(method) {
-    case 'getUserById':
-      return connectToRethinkDBServer().then(connect => {
-        return getUserById(connect, id).then(person => {
-          console.log(person);
-          return person;
-        });
-      })
+function crudAction({ method, id }) {
+  switch (method) {
+  case 'getUserById':
+    return connectToRethinkDBServer().then(connect => getUserById(connect, id).then((person) => {
+      console.log(person);
+      return person;
+    }));
   }
 }
 

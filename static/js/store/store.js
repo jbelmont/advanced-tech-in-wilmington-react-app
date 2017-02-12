@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux';
-import { syncHistoryWithStore} from 'react-router-redux';
+import { createStore } from 'redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
 import rootReducer from '../reducers/index';

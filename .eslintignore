@@ -1,0 +1,5 @@
+/node_modules
+/rethinkdb_data
+/coverage
+/.nyc_output
+/static/build

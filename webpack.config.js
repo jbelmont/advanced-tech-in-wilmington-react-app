@@ -7,7 +7,7 @@ module.exports = {
     App: './static/js/components/App.jsx'
   },
   output: {
-    path: __dirname + '/static/build',
+    path: `${__dirname}/static/build`,
     filename: '[name].js'
   },
   devtool: 'source-map',
@@ -16,9 +16,9 @@ module.exports = {
       test: /\.jsx?$/,
       loader: 'babel',
       query: {
-        presets:['es2015','react', 'stage-0']
+        presets: ['es2015', 'react', 'stage-0']
       }
-    },{
+    }, {
       test: /\.scss$/,
       loader: 'style!css!autoprefixer!sass?sourceMap'
     }]
@@ -32,7 +32,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development')
+        NODE_ENV: JSON.stringify('development')
       }
     }),
     new webpack.HotModuleReplacementPlugin()

@@ -1,3 +1,3 @@
 module.exports = {
-    dotEnv: require('dotenv').config()
+  dotEnv: require('dotenv').config()
 };

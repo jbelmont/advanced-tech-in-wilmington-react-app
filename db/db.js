@@ -1,12 +1,10 @@
-"use strict";
+
 
 const rethinkdb = require('rethinkdb');
 const winston = require('winston');
-const {join} = require('path');
+const { join } = require('path');
 
-const users = require(join(__dirname, '../models/users'))["users"];
-
-let connection;
+const users = require(join(__dirname, '../models/users')).users;
 
 const DB = {
   DATABASE_NAME: process.env.DATABASE_NAME || 'trianglereactjs',
@@ -17,19 +15,19 @@ const DB = {
 };
 
 function connectToRethinkDBServer() {
-    return rethinkdb
+  return rethinkdb
         .connect({
-            host : DB.host,
-            port : DB.port,
-            db: DB.DATABASE_NAME
+          host: DB.host,
+          port: DB.port,
+          db: DB.DATABASE_NAME
         })
-        .then(connect => {
+        .then((connect) => {
           process.env.connection = connect;
           return connect;
         })
         .catch((error) => {
-            winston.log('error', 'Database Connection Error', {error});
-            return error;
+          winston.log('error', 'Database Connection Error', { error });
+          return error;
         });
 }
 
@@ -43,7 +41,7 @@ function doesRethinkTableExist() {
 
 function createUsers(databaseExists) {
   if (!databaseExists) {
-      return createDB()
+    return createDB()
         .then(value => value);
   }
 }
@@ -51,8 +49,8 @@ function createUsers(databaseExists) {
 function createDB() {
   try {
     return rethinkdb.dbCreate(DB.DATABASE_NAME).run(DB.connection);
-  } catch(err) {
-    winston.log('error', 'Database Creation Error', {err});
+  } catch (err) {
+    winston.log('error', 'Database Creation Error', { err });
     return err;
   }
 }
@@ -78,22 +76,16 @@ function checkIfTableExists() {
     .table(DB.TABLE_NAME)
     .count()
     .run(DB.connection)
-    .then((count) => {
-      return count;
-    });
+    .then(count => count);
 }
 
 function getUsers() {
   return rethinkdb
     .table(DB.TABLE_NAME)
     .run(DB.connection)
-    .then(cursor => {
-      return cursor
+    .then(cursor => cursor
         .toArray()
-        .then(values => {
-          return values;
-        })
-    }); 
+        .then(values => values));
 }
 
 function dbActions() {
@@ -110,21 +102,16 @@ function dbActions() {
           .then(() => insertData());
       }
     })
-    .then(() => {
-      return checkIfTableExists()
-        .then(value => {
+    .then(() => checkIfTableExists()
+        .then((value) => {
           if (value > 0) {
             return getUsers()
               .then(values => values);
-          } else {
-            insertData()
-              .then(() => {
-                return getUsers()
-                  .then(values => values);
-              });
           }
-        });
-      });
+          insertData()
+              .then(() => getUsers()
+                  .then(values => values));
+        }));
 }
 
 exports.dbActions = dbActions;

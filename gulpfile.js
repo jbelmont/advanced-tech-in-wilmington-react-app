@@ -27,16 +27,16 @@ const sassPaths = [
 
 const filesToCopy = [
   {
-		src: './node_modules/react/dist/react.min.js',
-		dest: './static/build'
-	},
+    src: './node_modules/react/dist/react.min.js',
+    dest: './static/build'
+  },
   {
     src: './node_modules/react-dom/dist/react-dom.min.js',
-		dest: './static/build'
+    dest: './static/build'
   },
   {
     src: './node_modules/react-bootstrap/dist/react-bootstrap.min.js',
-		dest: './static/build'
+    dest: './static/build'
   },
   {
     src: './images/favicon.ico',
@@ -50,64 +50,58 @@ const filesToCopy = [
 ];
 
 gulp.task('copy:react:files', () => {
-	const streams = [];
-	filesToCopy.forEach(file => {
-		streams.push(gulp.src(file.src).pipe(gulp.dest(file.dest)));
-	});
-	return merge.apply(this, streams);
+  const streams = [];
+  filesToCopy.forEach((file) => {
+    streams.push(gulp.src(file.src).pipe(gulp.dest(file.dest)));
+  });
+  return merge.apply(this, streams);
 });
 
-gulp.task('uglify:js', () => {
-  return gulp.src(jsPaths)
+gulp.task('uglify:js', () => gulp.src(jsPaths)
     .pipe(uglify())
-    .pipe(gulp.dest('static/build'));
-});
+    .pipe(gulp.dest('static/build')));
 
 gulp.task('build:js', (callback) => {
   webpack(Object.create(webpackConfig), (err, stats) => {
     if (err) {
       throw new gutil.PluginError('build:js', err);
     }
-    gutil.log('[build:js]', stats.toString({colors: true, chunks: false}));
+    gutil.log('[build:js]', stats.toString({ colors: true, chunks: false }));
     callback();
   });
 });
 
-gulp.task('build:sass', () => {
-  return gulp.src(sassPaths[0])
+gulp.task('build:sass', () => gulp.src(sassPaths[0])
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
       includePaths: ['node_modules']
     }))
-    .pipe(autoprefixer({cascade: false}))
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(concat('triangle-react.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./static/build'))
-    .pipe(livereload());
-});
+    .pipe(livereload()));
 
-gulp.task('build:vendor:sass', () => {
-  return gulp.src([...sassPaths.slice(1)])
+gulp.task('build:vendor:sass', () => gulp.src([...sassPaths.slice(1)])
     .pipe(sourcemaps.init())
     .pipe(sass({
       outputStyle: 'compressed',
       includePaths: ['node_modules']
     }))
-    .pipe(autoprefixer({cascade: false}))
+    .pipe(autoprefixer({ cascade: false }))
     .pipe(concat('vendor.css'))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('./static/build'));
-});
+    .pipe(gulp.dest('./static/build')));
 
 gulp.task('watch:js', () => {
-  let config = Object.create(webpackConfig);
+  const config = Object.create(webpackConfig);
   config.watch = true;
   webpack(config, (err, stats) => {
     if (err) {
       throw new gutil.PluginError('watch:js', err);
     }
-    gutil.log('[watch:js]', stats.toString({colors: true, chunks: false}));
+    gutil.log('[watch:js]', stats.toString({ colors: true, chunks: false }));
   });
   gulp.watch('static/js/components/*.js', ['uglify:js', 'build:js']);
 });
@@ -120,12 +114,12 @@ gulp.task('start', () => {
   nodemon({
     script: './bin/www',
     ignore: ['static/*'],
-    env: { 'PORT': '3000' }
+    env: { PORT: '3000' }
   });
 });
 
 gulp.task('build', (cb) => {
-  runSequence('copy:react:files', 'uglify:js', 'build:js', 'build:sass', 'build:vendor:sass',  cb);
+  runSequence('copy:react:files', 'uglify:js', 'build:js', 'build:sass', 'build:vendor:sass', cb);
 });
 
 gulp.task('dev', (cb) => {

@@ -1,5 +1,5 @@
 function userInformation(state = [], action) {
-    const {
+  const {
         type,
         email,
         firstName,
@@ -7,25 +7,25 @@ function userInformation(state = [], action) {
         gender,
         id
     } = action;
-    
-    switch (type) {
-        case 'ADD_USER_DETAIL_INFO':
-            return Object.assign(
-                {}, 
+
+  switch (type) {
+  case 'ADD_USER_DETAIL_INFO':
+    return Object.assign(
+                {},
                 ...state,
-                {
-                    email,
-                    firstName,
-                    lastName,
-                    gender,
-                    id
-                }
+      {
+        email,
+        firstName,
+        lastName,
+        gender,
+        id
+      },
             );
-        case 'EMPTY_USER_INFO':
-            return {};
-        default:
-            return state;
-    }
+  case 'EMPTY_USER_INFO':
+    return {};
+  default:
+    return state;
+  }
 }
 
 export default userInformation;

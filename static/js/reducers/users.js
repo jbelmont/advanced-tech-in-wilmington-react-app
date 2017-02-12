@@ -7,20 +7,20 @@ function users(state = [], action) {
         gender,
         id
     } = action;
-  switch(type) {
-    case 'ADD_NEW_USER':
-            return [
-              ...state,
-              {
-                email: email,
-                first_name: firstName,
-                last_name: lastName,
-                gender: gender,
-                id: id
-              }
-            ]
-    default:
-      return state;
+  switch (type) {
+  case 'ADD_NEW_USER':
+    return [
+      ...state,
+      {
+        email,
+        first_name: firstName,
+        last_name: lastName,
+        gender,
+        id
+      }
+    ];
+  default:
+    return state;
   }
 }
 

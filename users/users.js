@@ -1,14 +1,12 @@
-'use strict';
+
 
 const express = require('express');
 const router = express.Router();
-const path = require('path');
-const winston = require('winston');
 
 
 // router.post('/receivePayment', (req, res, next) => {
 //     const {
-//         stripeToken, 
+//         stripeToken,
 //         amount
 //     } = req.body;
 //     return stripe.charges.create({
