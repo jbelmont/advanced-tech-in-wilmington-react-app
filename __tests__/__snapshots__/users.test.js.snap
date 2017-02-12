@@ -1,0 +1,31 @@
+exports[`test Test the <Users /> component 1`] = `
+<div
+  className="users-container"
+  onClick={[Function]}>
+  <span
+    className="users-container-email"
+    data-email="johnrambo@badass.net">
+    johnrambo@badass.net
+  </span>
+  <span
+    className="users-container-first-name"
+    data-first-name="John">
+    John
+  </span>
+  <span
+    className="users-container-last-name"
+    data-last-name="Rambo">
+    Rambo
+  </span>
+  <span
+    className="users-container-gender"
+    data-gender="Male">
+    Male
+  </span>
+  <span
+    className="users-container-id"
+    data-id="1">
+    1
+  </span>
+</div>
+`;
