@@ -7,7 +7,7 @@ import Users from './Users.jsx';
 
 import * as constants from '../constants/constants';
 
-class TriangleReact extends Component {
+class AdvancedTech extends Component {
 
   constructor(props) {
     super(props);
@@ -68,7 +68,7 @@ class TriangleReact extends Component {
     } = this.state;
 
     const {
-      TRIANGLE_REACTJS_USERS,
+      ADVANCED_TECH_USERS,
       ADD_USER,
       ADD,
       CLOSE,
@@ -122,7 +122,7 @@ class TriangleReact extends Component {
     }
 
     const UserArea = (
-        users.map(info => 
+        users.map(info =>
             <Users  email={info["email"]}
               first_name={info["first_name"]}
               last_name={info["last_name"]}
@@ -133,21 +133,21 @@ class TriangleReact extends Component {
             />
         )
     );
-    
+
     return (
-      <div className="triangle-react-container">
+      <div className="advanced-tech-container">
         <div className="add-user-btn-container">
-          <Button bsStyle="primary" 
-                  bsSize="large" 
+          <Button bsStyle="primary"
+                  bsSize="large"
                   onClick={this.togglePopDown}>{!showAddPopDown && ADD_USER || CLOSE}
           </Button>
         </div>
         {FormInstance}
-        <h2 className="triangle-react-container-label"><strong>{TRIANGLE_REACTJS_USERS}</strong></h2>
+        <h2 className="advanced-tech-container-label"><strong>{ADVANCED_TECH_USERS}</strong></h2>
         {UserArea}
       </div>
     );
   }
 }
 
-export default TriangleReact;
+export default AdvancedTech;

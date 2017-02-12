@@ -1,4 +1,4 @@
-
+'use strict';
 
 const rethinkdb = require('rethinkdb');
 const winston = require('winston');
@@ -7,7 +7,7 @@ const { join } = require('path');
 const users = require(join(__dirname, '../models/users')).users;
 
 const DB = {
-  DATABASE_NAME: process.env.DATABASE_NAME || 'trianglereactjs',
+  DATABASE_NAME: process.env.DATABASE_NAME || 'advancedtech',
   TABLE_NAME: process.env.TABLE_NAME || 'users',
   connection: null,
   port: process.env.DB_PORT || 28015,

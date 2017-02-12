@@ -1,7 +1,7 @@
 {
-  "name": "triangle-reactjs-redux-workshop",
+  "name": "advanced-tech-react-redux-workshop",
   "version": "0.1.0",
-  "description": "Redux workshop for Triangle Reactjs",
+  "description": "React/Redux workshop for Advanced Tech in Wilmington",
   "main": "index.js",
   "scripts": {
     "clean:build": "rimraf ./static/build",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jbelmont/triangle-reactjs-redux-workshop.git"
+    "url": "git+https://github.com/jbelmont/advanced-tech-in-wilmington-react-app.git"
   },
   "keywords": [
     "React",
@@ -34,9 +34,9 @@
   "author": "Jean-Marcel Belmont",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jbelmont/triangle-reactjs-redux-workshop/issues"
+    "url": "https://github.com/jbelmont/advanced-tech-in-wilmington-react-app/issues"
   },
-  "homepage": "https://github.com/jbelmont/triangle-reactjs-redux-workshop#readme",
+  "homepage": "https://github.com/jbelmont/advanced-tech-in-wilmington-react-app#readme",
   "dependencies": {
     "body-parser": "^1.16.1",
     "consolidate": "^0.14.5",

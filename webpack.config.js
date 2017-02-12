@@ -14,7 +14,7 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: ['es2015', 'react', 'stage-0']
       }
@@ -24,7 +24,7 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   externals: {
     react: 'React'

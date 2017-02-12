@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
-import TriangleReact from './TriangleReact';
+import AdvancedTech from './AdvancedTech';
 
 function mapStateToProps(state) {
   return {
@@ -13,6 +13,6 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
 }
 
-const Main = connect(mapStateToProps, mapDispatchToProps)(TriangleReact);
+const Main = connect(mapStateToProps, mapDispatchToProps)(AdvancedTech);
 
 export default Main;

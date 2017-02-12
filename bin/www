@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const app = require('../app');
-const debug = require('debug')('triangle-reactjs-redux:server');
+const debug = require('debug')('advanced-tech:server');
 const https = require('https');
 const path = require('path');
 const fs = require('fs');

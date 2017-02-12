@@ -30,8 +30,8 @@ const UserDetails = routerInfo => {
         </div>
     );
     return (
-        <div className="triangle-react-container">
-        <h2 className="triangle-react-container-label"><strong>Triangle ReactJS Users</strong></h2>
+        <div className="advanced-tech-container">
+        <h2 className="advanced-tech-container-label"><strong>Advanced Tech in Wilmington Users</strong></h2>
         {UserDetailsArea}
       </div>
     );

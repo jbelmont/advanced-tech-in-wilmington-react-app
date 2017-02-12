@@ -78,7 +78,7 @@ gulp.task('build:sass', () => gulp.src(sassPaths[0])
       includePaths: ['node_modules']
     }))
     .pipe(autoprefixer({ cascade: false }))
-    .pipe(concat('triangle-react.css'))
+    .pipe(concat('advanced-tech.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./static/build'))
     .pipe(livereload()));

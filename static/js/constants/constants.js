@@ -5,7 +5,7 @@ export const ADD_NEW_USER = 'ADD_NEW_USER';
 export const EMPTY_USER_INFO = 'EMPTY_USER_INFO';
 
 // Component Text Values
-export const TRIANGLE_REACTJS_USERS = 'Triangle ReactJS Users';
+export const ADVANCED_TECH_USERS = 'Advanced Tech in Wilmington Users';
 export const ADD_USER = 'Add User';
 export const ADD = 'Add';
 export const CLOSE = 'Close';

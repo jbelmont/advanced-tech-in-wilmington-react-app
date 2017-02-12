@@ -4,7 +4,7 @@ const rethinkdb = require('rethinkdb');
 const winston = require('winston');
 
 const DB = {
-  DATABASE_NAME: process.env.DATABASE_NAME || 'trianglereactjs',
+  DATABASE_NAME: process.env.DATABASE_NAME || 'advancedtech',
   TABLE_NAME: process.env.TABLE_NAME || 'users',
   port: process.env.DB_PORT || 28015,
   connection: process.env.connection || null,
