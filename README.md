@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/jbelmont/advanced-tech-in-wilmington-react-app.svg?branch=master)](https://travis-ci.org/jbelmont/advanced-tech-in-wilmington-react-app)
-
+[![Coverage Status](https://coveralls.io/repos/github/jbelmont/advanced-tech-in-wilmington-react-app/badge.svg?branch=master)](https://coveralls.io/github/jbelmont/advanced-tech-in-wilmington-react-app?branch=master)
 
 # Advanced Tech in Wilmington React/Redux Workshop
 Show how to build a Restful api using Node.js and a Robust FrontEnd with React, Redux and React Router
