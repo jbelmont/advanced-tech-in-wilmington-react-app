@@ -7,3 +7,7 @@
 /static/build
 /.vscode
 /jsConfig.json
+/coverage
+/selenium-debug.log
+/reports
+/.nyc_output

@@ -3,24 +3,29 @@
   "version": "0.1.0",
   "description": "React/Redux workshop for Advanced Tech in Wilmington",
   "main": "index.js",
+  "config": {
+    "lint": "*.js routes/*.js models/*.js db/*.js config/*.js bin/www static/js/components/*.jsx static/js/actions/index.js static/js/constants/constants.js static/js/data/data.js static/js/reducers/*.js static/js/store/*.js static/js/utils/ajax.js",
+    "report": "report --reporter=text-lcov"
+  },
   "scripts": {
+    "build": "npm run clean:build && gulp build",
     "clean:build": "rimraf ./static/build",
     "predev": "npm run clean:build",
     "dev": "gulp dev",
     "debug": "npm run clean:build && gulp debug",
-    "build": "npm run clean:build && gulp build",
     "test": "jest",
     "test:action:creators": "jest __tests__/actions.test.js",
     "test:reducers": "jest __tests__/reducers.test.js",
     "test:users:component": "jest __tests__/users.test.js",
-    "integration:test": "tap test/integration-tests/*.js",
-    "update:packages": "rm -rf node_modules && npm update --save-dev && npm update --save",
-    "lint": "eslint *.js routes/*.js models/*.js db/*.js config/*.js bin/www static/js/components/*.jsx static/js/actions/index.js static/js/constants/constants.js static/js/data/data.js static/js/reducers/*.js static/js/store/*.js static/js/utils/ajax.js",
-    "lint:fix": "eslint --fix *.js routes/*.js models/*.js db/*.js config/*.js bin/www static/js/components/*.jsx static/js/actions/index.js static/js/constants/constants.js static/js/data/data.js static/js/reducers/*.js static/js/store/*.js static/js/utils/ajax.js",
     "e2e": "node --harmony test/nightwatch.runner.js",
-    "tap:test": "tap test/unit/*.js test/integration/*.js",
-    "posttap:test": "nyc report --reporter=text-lcov",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "ava:unit:test": "nyc ava test/unit/*.js",
+    "ava:integration:test": "nyc ava test/integration-tests/*.js",
+    "ava:test": "nyc ava test/unit/*.js test/integration/*.js",
+    "postava:test": "nyc $npm_package_config_report",
+    "lint": "eslint $npm_package_config_lint",
+    "lint:fix": "eslint --fix $npm_package_config_lint",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "update:packages": "rm -rf node_modules && npm update --save-dev && npm update --save"
   },
   "repository": {
     "type": "git",
@@ -62,6 +67,7 @@
     "winston": "^2.3.1"
   },
   "devDependencies": {
+    "ava": "^0.18.1",
     "babel-cli": "^6.22.2",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
@@ -74,6 +80,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.22.0",
     "bootstrap": "^3.3.7",
+    "chromedriver": "^2.27.2",
     "dotenv": "^4.0.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.15.0",
@@ -84,6 +91,7 @@
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^3.0.1",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-sass": "^3.1.0",
@@ -94,12 +102,13 @@
     "merge-stream": "^1.0.1",
     "nightwatch": "^0.9.12",
     "node-sass": "^4.5.0",
+    "nyc": "^10.1.2",
     "react-addons-test-utils": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-test-renderer": "^15.4.2",
     "sass-loader": "^5.0.1",
+    "selenium-server": "^3.0.1",
     "style-loader": "^0.13.1",
-    "tap": "^10.1.0",
     "webpack": "^2.2.1"
   }
 }

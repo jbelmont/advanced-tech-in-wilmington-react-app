@@ -1,9 +1,9 @@
 require('babel-register');
-require('../config/config');
+require('../config');
 
 // http://nightwatchjs.org/guide#settings-file
 module.exports = {
-  'src_folders' : ['test/end-to-end-tests'],
+  'src_folders' : ['test/e2e'],
   'output_folder' : 'reports',
   'custom_commands_path' : '',
   'custom_assertions_path' : '',
