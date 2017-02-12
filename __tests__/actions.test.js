@@ -1,5 +1,5 @@
-import * as actions from '../static/js/actions/index';
-import * as types from '../static/js/constants/constants';
+import * as actions from '../static/js/actions';
+import * as types from '../static/js/constants';
 
 describe('Test Action Creators', () => {
   let GET_USERS,

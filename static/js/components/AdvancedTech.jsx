@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import { Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap/lib';
 
-import Users from './Users.jsx';
+import Users from './Users';
 
-import * as constants from '../constants/constants';
+import * as constants from '../constants';
 
 class AdvancedTech extends Component {
 
@@ -148,5 +148,9 @@ class AdvancedTech extends Component {
     );
   }
 }
+
+AdvancedTech.PropTypes = {
+  users: PropTypes.array
+};
 
 export default AdvancedTech;

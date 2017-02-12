@@ -39,6 +39,9 @@ module.exports = {
       "mongo": true,
       "mocha": true
   },
+  "ext": {
+    "jsx": true
+  },
   "plugins": [
       "react",
       "jsx-a11y",

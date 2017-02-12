@@ -113,8 +113,26 @@ gulp.task('watch:sass', () => {
 gulp.task('start', () => {
   nodemon({
     script: './bin/www',
+    execMap: {
+      js: 'node --harmony'
+    },
     ignore: ['static/*'],
-    env: { PORT: '3000' }
+    env: {
+      PORT: '3000'
+    }
+  });
+});
+
+gulp.task('dev:debug', () => {
+  nodemon({
+    script: './bin/www',
+    execMap: {
+      js: 'node --harmony --inspect'
+    },
+    ignore: ['static/*'],
+    env: {
+      PORT: '3000'
+    }
   });
 });
 
@@ -123,6 +141,11 @@ gulp.task('build', (cb) => {
 });
 
 gulp.task('dev', (cb) => {
+  livereload.listen();
+  runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass'], 'dev:debug', cb);
+});
+
+gulp.task('debug', (cb) => {
   livereload.listen();
   runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass'], 'start', cb);
 });

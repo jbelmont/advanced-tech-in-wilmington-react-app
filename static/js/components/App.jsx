@@ -3,11 +3,11 @@ import { render } from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 
-import store, { history } from '../store/store';
+import store, { history } from '../store';
 
-import AdvancedTech from './AdvancedTech.jsx';
-import Main from './Main.jsx';
-import UserDetails from './UserDetails.jsx';
+import AdvancedTech from './AdvancedTech';
+import Main from './Main';
+import UserDetails from './UserDetails';
 
 const router = (
   <Provider store={store}>

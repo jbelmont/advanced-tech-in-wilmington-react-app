@@ -11,8 +11,8 @@ function userInformation(state = [], action) {
   switch (type) {
   case 'ADD_USER_DETAIL_INFO':
     return Object.assign(
-                {},
-                ...state,
+      {},
+      ...state,
       {
         email,
         firstName,

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import store from '../store/store';
+import store from '../store';
 
 const UserDetails = () => {
   const userInformation = store && store.getState() && store.getState()['userInfo'];

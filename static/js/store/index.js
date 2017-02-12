@@ -3,7 +3,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
 import rootReducer from '../reducers/index';
-import data from '../data/data';
+import data from '../data';
 
 const store = createStore(rootReducer, { users: data.users });
 
