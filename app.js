@@ -1,4 +1,4 @@
-
+'use strict';
 
 const express = require('express');
 const path = require('path');
@@ -8,10 +8,10 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 // Load Environment Variables
-require(path.join(__dirname, 'config/config')).dotEnv;
+require(path.join(__dirname, 'config')).dotEnv;
 
 const routes = require('./routes/index');
-const users = require(path.join(__dirname, 'users/users'));
+const users = require(path.join(__dirname, 'users'));
 
 const app = express();
 

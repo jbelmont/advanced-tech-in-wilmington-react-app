@@ -13,7 +13,7 @@ const {
  * Create Database, table and insert values if necessary
  * Else grab values from Recipes table to use for client
  */
-const db = require(join(__dirname, '../db/db'));
+const db = require(join(__dirname, '../db'));
 
 db.dbActions()
   .then((values) => {
