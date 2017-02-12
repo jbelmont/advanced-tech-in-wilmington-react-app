@@ -8,6 +8,13 @@ import * as constants from '../constants';
 
 class AdvancedTech extends Component {
 
+  static propTypes = {
+    users: PropTypes.array,
+    getUserInfo: PropTypes.func,
+    addUserInfo: PropTypes.func,
+    getusers: PropTypes.func
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -122,7 +129,7 @@ class AdvancedTech extends Component {
 
     const UserArea = (
         users.map(info =>
-            <Users  email={info['email']}
+            <Users email={info['email']}
               first_name={info['first_name']}
               last_name={info['last_name']}
               gender={info['gender']}
@@ -148,9 +155,5 @@ class AdvancedTech extends Component {
     );
   }
 }
-
-AdvancedTech.PropTypes = {
-  users: PropTypes.array
-};
 
 export default AdvancedTech;

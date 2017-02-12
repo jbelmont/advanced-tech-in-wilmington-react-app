@@ -1,7 +1,5 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import {browserHistory} from 'react-router';
-
-import {addUserInfo} from '../actions/index';
 
 const Users = ( { email, first_name, last_name, gender, id, props, onClick } ) => {
 
@@ -30,6 +28,16 @@ const Users = ( { email, first_name, last_name, gender, id, props, onClick } ) =
         <span data-id={id} className="users-container-id">{id}</span>
     </div>
   );
+};
+
+Users.propTypes = {
+  email: PropTypes.string,
+  first_name: PropTypes.string,
+  last_name: PropTypes.string,
+  gender: PropTypes.string,
+  id: PropTypes.string,
+  props: PropTypes.array,
+  onClick: PropTypes.func
 };
 
 export default Users;
