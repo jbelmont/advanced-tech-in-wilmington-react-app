@@ -19,7 +19,7 @@
     "test:users:component": "jest __tests__/users.test.js",
     "e2e": "node --harmony test/nightwatch.runner.js",
     "ava:unit:test": "nyc ava test/unit/*.js",
-    "ava:integration:test": "nyc ava test/integration-tests/*.js",
+    "ava:integration:test": "nyc ava test/integration/*.js",
     "test": "nyc ava test/unit/*.js test/integration/*.js",
     "postava:test": "nyc $npm_package_config_report",
     "lint": "eslint $npm_package_config_lint",
