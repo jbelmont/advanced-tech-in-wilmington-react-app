@@ -11,3 +11,13 @@
 /selenium-debug.log
 /reports
 /.nyc_output
+
+## files for gh-pages to ignore
+/config
+/db
+/images
+/models
+/routes
+/static
+/test
+/users

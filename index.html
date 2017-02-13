@@ -1,0 +1,53 @@
+<html>
+  <head>
+      <link rel="stylesheet" href="reveal.css">
+      <link rel="stylesheet" href="zenburn.css">
+      <link rel="stylesheet" href="css/theme/league.css">
+  </head>
+    <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h4>Building and Testing ReactJS apps</h4>
+          <p>Speaker Jean-Marcel Belmont</p>
+          <p>Software Engineer at Genisys</p>
+        </section>
+        <section>
+          <section>
+            <h4>Topic</h4>
+          </section>
+          <section>
+            <h4>Topic</h4>
+          </section>
+        </section>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+      <script src="reveal.js"></script>
+      <script>
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          transition: 'convex',
+          math: {
+            mathjax: 'https://cdn.mathjax.org/mathjax/latest/MathJax.js',
+            config: 'TeX-AMS_HTML-full'
+          },
+          dependencies: [
+            {
+              src: 'plugin/highlight/highlight.js',
+              async: true,
+              callback: function() {
+                hljs.initHighlightingOnLoad();
+              }
+            },
+            {
+              src: 'plugin/math/math.js',
+              async: true
+            }
+          ]
+        });
+  </script>
+  </body>
+</html>
