@@ -1,4 +1,4 @@
-
+'use strict';
 
 const rethinkdb = require('rethinkdb');
 const winston = require('winston');
