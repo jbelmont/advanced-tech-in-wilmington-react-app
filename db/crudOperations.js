@@ -28,6 +28,15 @@ function connectToRethinkDBServer() {
         });
 }
 
+function insertDocument(user) {
+  return connectToRethinkDBServer().then(connect => {
+    rethinkdb
+    .table(DB.TABLE_NAME)
+    .insert(user)
+    .run(connect);
+  });
+}
+
 function getUserById(connect, id) {
   return rethinkdb
     .table(DB.TABLE_NAME)
@@ -44,10 +53,10 @@ function crudAction({ method, id }) {
   switch (method) {
   case 'getUserById':
     return connectToRethinkDBServer().then(connect => getUserById(connect, id).then((person) => {
-      console.log(person);
       return person;
     }));
   }
 }
 
 exports.crudAction = crudAction;
+exports.insertDocument = insertDocument;

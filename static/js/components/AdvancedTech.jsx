@@ -1,5 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 
+import store from '../store';
+
+import {ajax} from '../utils/ajax.js';
+
 import { Button, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap/lib';
 
 import Users from './Users';
@@ -26,6 +30,7 @@ class AdvancedTech extends Component {
     this.getValidationState = this.getValidationState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.addUser = this.addUser.bind(this);
+    this._generateAddUserRoute = this._generateAddUserRoute.bind(this);
   }
 
   togglePopDown() {
@@ -62,8 +67,24 @@ class AdvancedTech extends Component {
       id
     };
     this.props.addUserInfo(newUser);
-    const users = this.props.getusers(this.state.users);
-    console.log(users);
+    return ajax(this._generateAddUserRoute(newUser))
+      .then(() => {
+        const users = store.getState()['users'];
+        this.setState({
+          users: users
+        });
+        this.togglePopDown();
+      });
+  }
+
+  _generateAddUserRoute(user) {
+    return {
+      type: 'POST',
+      route: '/api/v1/users/addUser',
+      body: {
+        user
+      }
+    };
   }
 
   render() {
@@ -115,7 +136,7 @@ class AdvancedTech extends Component {
             label="Last Name:"
             placeholder="Enter Last Name"
           />
-          <FormGroup controlId="formControlsSelect">
+          <FormGroup>
             <ControlLabel>{GENDER}</ControlLabel>
             <FormControl id="genderSelect" componentClass="select" placeholder="select">
               <option value={MALE}>{MALE}</option>

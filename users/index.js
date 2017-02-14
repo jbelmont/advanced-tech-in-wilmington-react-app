@@ -1,22 +1,21 @@
-
+'use strict';
 
 const express = require('express');
 const router = express.Router();
 
+const {
+  insertDocument
+} = require('../db/crudOperations');
 
-// router.post('/receivePayment', (req, res, next) => {
-//     const {
-//         stripeToken,
-//         amount
-//     } = req.body;
-//     return stripe.charges.create({
-//         amount,
-//         currency: "usd",
-//         source: stripeToken,
-//         description: "Menu Item Charge"
-//     })
-//     .then(charge => res.send(charge))
-//     .catch(err => winston.log('error', 'Error Creating Charge for stripe', {err}));
-// });
+router.post('/addUser', (req, res) => {
+  const {
+    user
+  } = req.body;
+  return insertDocument(user)
+    .then(() => {
+      res.send(user);
+    })
+    .catch(err => err);
+});
 
 module.exports = router;

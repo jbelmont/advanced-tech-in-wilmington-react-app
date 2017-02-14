@@ -9,7 +9,7 @@ function userInformation(state = [], action) {
     } = action;
 
   switch (type) {
-  case 'ADD_USER_DETAIL_INFO':
+  case 'USER_DETAIL_INFO':
     return Object.assign(
       {},
       ...state,
@@ -20,7 +20,18 @@ function userInformation(state = [], action) {
         gender,
         id
       },
-            );
+    );
+  case 'ADD_NEW_USER':
+    return [
+      ...state,
+      {
+        email,
+        first_name: firstName,
+        last_name: lastName,
+        gender,
+        id
+      }
+    ];
   case 'EMPTY_USER_INFO':
     return {};
   default:
