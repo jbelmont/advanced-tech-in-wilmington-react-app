@@ -4,7 +4,7 @@
   "description": "React/Redux workshop for Advanced Tech in Wilmington",
   "main": "index.js",
   "config": {
-    "lint": "*.js routes/*.js models/*.js db/*.js config/*.js bin/www static/js/components/*.jsx static/js/actions/index.js static/js/constants/constants.js static/js/data/data.js static/js/reducers/*.js static/js/store/*.js static/js/utils/ajax.js",
+    "lint": "*.js routes/*.js models/*.js db/*.js config/*.js bin/www static/js/components/*.jsx static/js/actions/index.js static/js/constants/constants.js static/js/data/data.js static/js/reducers/*.js static/js/store/*.js static/js/utils/ajax.js __tests__/*.js",
     "report": "report --reporter=text-lcov"
   },
   "scripts": {

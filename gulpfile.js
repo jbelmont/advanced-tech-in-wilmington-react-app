@@ -117,7 +117,7 @@ gulp.task('watch-lint', () => {
   // format results with each file, since this stream won't end.
   lintAndPrint.pipe(eslint.formatEach());
 
-  return gulp.watch(['*.js', 'routes/*.js', 'models/*.js', 'db/*.js', 'config/*.js', 'bin/www', 'static/js/components/*.jsx', 'static/js/actions/index.js', 'static/js/constants/constants.js', 'static/js/data/data.js', 'static/js/reducers/*.js', 'static/js/store/*.js', 'static/js/utils/ajax.js'], event => {
+  return gulp.watch(['*.js', 'routes/*.js', 'models/*.js', 'db/*.js', 'config/*.js', 'bin/www', 'static/js/components/*.jsx', 'static/js/actions/index.js', 'static/js/constants/constants.js', 'static/js/data/data.js', 'static/js/reducers/*.js', 'static/js/store/*.js', 'static/js/utils/ajax.js', '__tests__/*.js'], event => {
     if (event.type !== 'deleted') {
       gulp.src(event.path).pipe(lintAndPrint, {end: false});
     }
@@ -128,9 +128,7 @@ gulp.task('watch-lint', () => {
 gulp.task('start', () => {
   nodemon({
     script: './bin/www',
-    execMap: {
-      js: 'node --harmony'
-    },
+    exec: 'node --harmony',
     ignore: ['static/*'],
     env: {
       PORT: '3000'
@@ -141,9 +139,7 @@ gulp.task('start', () => {
 gulp.task('dev:debug', () => {
   nodemon({
     script: './bin/www',
-    execMap: {
-      js: 'node --harmony --inspect'
-    },
+    exec: 'node --inspect --harmony',
     ignore: ['static/*'],
     env: {
       PORT: '3000'
@@ -157,10 +153,10 @@ gulp.task('build', (cb) => {
 
 gulp.task('dev', (cb) => {
   livereload.listen();
-  runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass', 'watch-lint'], 'dev:debug', cb);
+  runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass', 'watch-lint'], 'start', cb);
 });
 
 gulp.task('debug', (cb) => {
   livereload.listen();
-  runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass', 'watch-lint'], 'start', cb);
+  runSequence('copy:react:files', 'uglify:js', 'build:sass', 'build:vendor:sass', ['watch:js', 'watch:sass', 'watch-lint'], 'dev:debug', cb);
 });

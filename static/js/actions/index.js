@@ -2,7 +2,7 @@ import * as constants from '../constants';
 
 const {
     GET_USERS,
-    ADD_USER_DETAIL_INFO,
+    USER_DETAIL_INFO,
     ADD_NEW_USER
 } = constants;
 
@@ -15,7 +15,7 @@ export function getusers({ users }) {
 
 export function getUserInfo({ email, firstName, lastName, gender, id }) {
   return {
-    type: ADD_USER_DETAIL_INFO,
+    type: USER_DETAIL_INFO,
     email,
     firstName,
     lastName,

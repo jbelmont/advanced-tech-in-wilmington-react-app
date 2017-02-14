@@ -5,7 +5,7 @@ const router = express.Router();
 const { join } = require('path');
 
 const {
-  crudAction
+  getUserById
 } = require(join(__dirname, '../db/crudOperations'));
 
 /**
@@ -27,10 +27,8 @@ db.dbActions()
     });
 
     /* Route back to home page. */
-    router.get('/user/:id', (req, res) => crudAction({
-      method: 'getUserById',
-      id: req.params.id
-    }).then((person) => {
+    router.get('/user/:id', (req, res) => getUserById(req.params.id)
+    .then((person) => {
       res.render('index', {
         users: JSON.stringify(person)
       });

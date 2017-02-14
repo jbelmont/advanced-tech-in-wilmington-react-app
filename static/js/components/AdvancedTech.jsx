@@ -60,9 +60,9 @@ class AdvancedTech extends Component {
     const gender = select.options[select.selectedIndex].value;
     const id = Math.max.apply(Math, this.state.users.map(user => user['id'])) + 1;
     const newUser = {
+      first_name: firstName,
+      last_name: lastName,
       email,
-      firstName,
-      lastName,
       gender,
       id
     };
@@ -150,13 +150,18 @@ class AdvancedTech extends Component {
 
     const UserArea = (
         users.map(info =>
-            <Users email={info['email']}
-              first_name={info['first_name']}
-              last_name={info['last_name']}
-              gender={info['gender']}
-              id={info['id']}
-              props={this.props}
-              onClick={this.props.getUserInfo}
+            <Users  data-email={info['email']}
+                    email={info['email']}
+                    data-first-name={info['first_name']}
+                    first_name={info['first_name']}
+                    data-last-name={info['last_name']}
+                    last_name={info['last_name']}
+                    data-gender={info['gender']}
+                    gender={info['gender']}
+                    data-id={info['id']}
+                    id={info['id']}
+                    props={this.props}
+                    onClick={this.props.getUserInfo}
             />
         )
     );

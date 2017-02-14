@@ -3,11 +3,11 @@ import userInformationReducer from '../static/js/reducers/userDetailInformation'
 import * as types from '../static/js/constants';
 
 describe('Test all the reducers', () => {
-  let ADD_USER_DETAIL_INFO,
+  let USER_DETAIL_INFO,
     EMPTY_USER_INFO,
     DEFAULT = '';
   beforeAll(() => {
-    ADD_USER_DETAIL_INFO = types.ADD_USER_DETAIL_INFO;
+    USER_DETAIL_INFO = types.USER_DETAIL_INFO;
     EMPTY_USER_INFO = types.EMPTY_USER_INFO;
   });
 
@@ -20,50 +20,50 @@ describe('Test all the reducers', () => {
   describe('Test the userInformation reducer', () => {
     it('should return default state when passed EMPTY string for default action', () => {
       expect(
-                userInformationReducer(
-                  [
-                        { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
-                  ],
-                  {
-                    type: DEFAULT
-                  },
-                ),
-            ).toEqual(
+          userInformationReducer(
+            [
+                  { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
+            ],
+            {
+              type: DEFAULT
+            },
+          ),
+        )
+        .toEqual(
         [
-                    { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
+          { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
         ],
-            );
+      );
     });
 
     it('should return EMPTY object when passed EMPTY_USER_INFO action', () => {
       expect(
-                userInformationReducer(
-                  [
-                        { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
-                  ],
-                  {
-                    type: EMPTY_USER_INFO
-                  },
-                ),
-            ).toEqual({});
+          userInformationReducer(
+            [
+                  { email: 'handersonj@about.com', first_name: 'Harry', gender: 'Male', id: 20, last_name: 'Anderson' }
+            ],
+            {
+              type: EMPTY_USER_INFO
+            },
+          ),
+      ).toEqual({});
     });
 
-    it('should add newer object properties when passed ADD_USER_DETAIL_INFO action', () => {
+    it('should add newer object properties when passed USER_DETAIL_INFO action', () => {
       expect(
-                userInformationReducer(
-                    [],
-                  {
-                    type: ADD_USER_DETAIL_INFO,
-                    email: 'handersonj@about.com',
-                    firstName: 'Harry',
-                    gender: 'Male',
-                    id: 20,
-                    lastName: 'Anderson'
-                  },
-                ),
-            ).toEqual(
-                { email: 'handersonj@about.com', firstName: 'Harry', gender: 'Male', id: 20, lastName: 'Anderson' },
-            );
+        userInformationReducer(
+            [],
+          {
+            type: USER_DETAIL_INFO,
+            email: 'handersonj@about.com',
+            firstName: 'Harry',
+            gender: 'Male',
+            id: 20,
+            lastName: 'Anderson'
+          },
+      )).toEqual(
+        { email: 'handersonj@about.com', firstName: 'Harry', gender: 'Male', id: 20, lastName: 'Anderson' },
+      );
     });
   });
 });
