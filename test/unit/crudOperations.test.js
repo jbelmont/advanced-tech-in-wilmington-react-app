@@ -6,6 +6,8 @@ const {
   cleanup
 } = require('ava-rethinkdb');
 
+const r = require('rethinkdb');
+
 const TEST_DATA = {
   advancedtechtest: {
     users: [
@@ -33,6 +35,13 @@ test.before(
   init(TEST_DATA)
 );
 test.after.always(cleanup);
+
+test('Documents should exist', async t => {
+  let conn = await r.connect({ db: 'advancedtechtest' });
+  let results = await r.table('users').run(conn);
+  let data = await results.toArray();
+  t.truthy(data);
+});
 
 test('getUserById should return a user', async t => {
   const actual = await getUserById('20');
