@@ -39,7 +39,7 @@ function insertDocument(user) {
 
 function deleteDocument(user) {
   return connectToRethinkDBServer().then(connect => {
-    rethinkdb
+    return rethinkdb
     .table(DB.TABLE_NAME)
     .filter(user)
     .delete()

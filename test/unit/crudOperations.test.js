@@ -44,7 +44,27 @@ test('Documents should exist', async t => {
 });
 
 test('getUserById should return a user', async t => {
-  const actual = await getUserById('20');
-  const expected = {'email':'handersonj@about.com','first_name':'Harry','gender':'Male','id':20,'last_name':'Anderson'};
+  const actual = await getUserById('4');
+  const expected = {
+    'email':'dpayne3@cdbaby.com','first_name':'Donna','gender':'Female','id':4,'last_name':'Payne'
+  };
   t.deepEqual(actual, expected);
+});
+
+test('insertDocument should a new document to users table', async t => {
+  const document = {
+    'email':'johnrambo@badass.net','first_name':'John','gender':'Male','id': 51,'last_name':'Rambo'
+  };
+  await insertDocument(document);
+  const actual = await getUserById('51');
+  t.deepEqual(actual, document);
+});
+
+test('deleteDocument should remove document', async t => {
+  const document = {
+    'email':'handersonj@about.com','first_name':'Harry','gender':'Male','id':20,'last_name':'Anderson'
+  };
+  await deleteDocument(document);
+  const actual = await getUserById('20');
+  t.deepEqual(actual, undefined);
 });
