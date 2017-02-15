@@ -3,10 +3,12 @@ import * as types from '../static/js/constants';
 
 describe('Test Action Creators', () => {
   let GET_USERS,
-    USER_DETAIL_INFO;
+    USER_DETAIL_INFO,
+    ADD_NEW_USER;
   beforeAll(() => {
     GET_USERS = types.GET_USERS;
     USER_DETAIL_INFO = types.USER_DETAIL_INFO;
+    ADD_NEW_USER = types.ADD_NEW_USER;
   });
 
   it('getUsers should create an action to get users', () => {
@@ -28,8 +30,8 @@ describe('Test Action Creators', () => {
     expect(actions.getusers({ users })).toEqual(expectedAction);
   });
 
-  it('addUserInfo should create an action that adds single user info to store', () => {
-    const addUser = {
+  it('getUserInfo should create an action that returns single user info to store', () => {
+    const getUser = {
       email: 'handersonj@about.com',
       firstName: 'Harry',
       gender: 'Male',
@@ -45,6 +47,26 @@ describe('Test Action Creators', () => {
       id: 20,
       lastName: 'Anderson'
     };
-    expect(actions.getUserInfo(addUser)).toEqual(expectedAction);
+    expect(actions.getUserInfo(getUser)).toEqual(expectedAction);
+  });
+
+  it('addUserInfo should create an action that adds user info to store', () => {
+    const addUser = {
+      email: 'johnrambo@badass.net',
+      firstName: 'John',
+      gender: 'Male',
+      id: 1,
+      lastName: 'Rambo'
+    };
+
+    const expectedAction = {
+      type: ADD_NEW_USER,
+      email: 'johnrambo@badass.net',
+      firstName: 'John',
+      gender: 'Male',
+      id: 1,
+      lastName: 'Rambo'
+    };
+    expect(actions.addUserInfo(addUser)).toEqual(expectedAction);
   });
 });
