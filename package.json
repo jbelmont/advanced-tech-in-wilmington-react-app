@@ -16,7 +16,6 @@
     "jest:test": "jest",
     "test:action:creators": "jest __tests__/actions.test.js",
     "test:reducers": "jest __tests__/reducers.test.js",
-    "test:users:component": "jest __tests__/users.test.js",
     "e2e": "node --harmony test/nightwatch.runner.js",
     "ava:unit:test": "nyc ava test/unit/*.js",
     "ava:integration:test": "nyc ava test/integration/*.js",

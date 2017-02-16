@@ -1,0 +1,77 @@
+exports[`test Test the <AdvancedTech /> component 1`] = `
+<div
+  className="advanced-tech-container">
+  <div
+    className="add-user-btn-container" />
+  <h2
+    className="advanced-tech-container-label">
+    <strong />
+  </h2>
+  <Users
+    data-email={undefined}
+    data-first-name="john"
+    data-gender={undefined}
+    data-id={1}
+    data-last-name="rambo"
+    email={undefined}
+    first_name="john"
+    gender={undefined}
+    id={1}
+    last_name="rambo"
+    onClick={[Function]}
+    props={
+      Object {
+        "addUserInfo": [Function],
+        "genderValue": "Male",
+        "getUserInfo": [Function],
+        "getusers": [Function],
+        "showAddPopDown": false,
+        "users": Array [
+          Object {
+            "first_name": "john",
+            "id": 1,
+            "last_name": "rambo",
+          },
+          Object {
+            "first_name": "chuck",
+            "id": 2,
+            "last_name": "norris",
+          },
+        ],
+      }
+    } />
+  <Users
+    data-email={undefined}
+    data-first-name="chuck"
+    data-gender={undefined}
+    data-id={2}
+    data-last-name="norris"
+    email={undefined}
+    first_name="chuck"
+    gender={undefined}
+    id={2}
+    last_name="norris"
+    onClick={[Function]}
+    props={
+      Object {
+        "addUserInfo": [Function],
+        "genderValue": "Male",
+        "getUserInfo": [Function],
+        "getusers": [Function],
+        "showAddPopDown": false,
+        "users": Array [
+          Object {
+            "first_name": "john",
+            "id": 1,
+            "last_name": "rambo",
+          },
+          Object {
+            "first_name": "chuck",
+            "id": 2,
+            "last_name": "norris",
+          },
+        ],
+      }
+    } />
+</div>
+`;

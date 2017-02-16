@@ -160,6 +160,7 @@ class AdvancedTech extends Component {
                     gender={info['gender']}
                     data-id={info['id']}
                     id={info['id']}
+                    key={info['id']}
                     props={this.props}
                     onClick={this.props.getUserInfo}
             />
