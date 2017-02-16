@@ -11,7 +11,10 @@ const DB = {
   host: process.env.DB_HOST || 'localhost'
 };
 
-function connectToRethinkDBServer() {
+function connectToRethinkDBServer(connect) {
+  if (connect) {
+    return Promise.resolve(connect);
+  }
   return rethinkdb
   .connect({
     host: DB.host,
@@ -28,37 +31,40 @@ function connectToRethinkDBServer() {
   });
 }
 
-function insertDocument(user) {
-  return connectToRethinkDBServer().then(connect => {
-    rethinkdb
-    .table(DB.TABLE_NAME)
-    .insert(user)
-    .run(connect);
-  });
+function insertDocument({ connect, user }) {
+  return connectToRethinkDBServer(connect)
+    .then(connection => {
+      return rethinkdb
+        .table(DB.TABLE_NAME)
+        .insert(user)
+        .run(connection);
+    });
 }
 
-function deleteDocument(user) {
-  return connectToRethinkDBServer().then(connect => {
-    return rethinkdb
-    .table(DB.TABLE_NAME)
-    .filter(user)
-    .delete()
-    .run(connect);
-  });
+function deleteDocument({ connect, user }) {
+  return connectToRethinkDBServer(connect)
+    .then(connection => {
+      return rethinkdb
+        .table(DB.TABLE_NAME)
+        .filter(user)
+        .delete()
+        .run(connection);
+    });
 }
 
-function getUserById(id) {
-  return connectToRethinkDBServer().then(connect => {
-    return rethinkdb
-    .table(DB.TABLE_NAME)
-    .filter({
-      id: Number(id)
-    })
-    .run(connect)
-    .then(cursor => cursor
-        .toArray()
-        .then(values => values[0]));
-  });
+function getUserById({ connect, id }) {
+  return connectToRethinkDBServer(connect)
+    .then(connection => {
+      return rethinkdb
+        .table(DB.TABLE_NAME)
+        .filter({
+          id: Number(id)
+        })
+        .run(connection)
+        .then(cursor => cursor
+          .toArray()
+          .then(values => values[0]));
+    });
 }
 
 exports.getUserById = getUserById;

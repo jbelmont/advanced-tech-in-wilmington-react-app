@@ -37,34 +37,37 @@ test.before(
 test.after.always(cleanup);
 
 test('Documents should exist', async t => {
-  let conn = await r.connect({ db: 'advancedtech' });
-  let results = await r.table('users').run(conn);
+  const connect = await r.connect({ db: 'advancedtech' });
+  let results = await r.table('users').run(connect);
   let data = await results.toArray();
   t.truthy(data);
 });
 
 test('getUserById should return a user', async t => {
-  const actual = await getUserById('4');
+  const connect = await r.connect({ db: 'advancedtech' });
+  const actual = await getUserById({ connect: connect, id: '4'});
   const expected = {
     'email':'dpayne3@cdbaby.com','first_name':'Donna','gender':'Female','id':4,'last_name':'Payne'
   };
   t.deepEqual(actual, expected);
 });
 
-test('insertDocument should creat a new document to users table', async t => {
+test('insertDocument should create a new document to users table', async t => {
+  const connect = await r.connect({ db: 'advancedtech' });
   const document = {
     'email':'johnrambo@badass.net','first_name':'John','gender':'Male','id': 51,'last_name':'Rambo'
   };
-  await insertDocument(document);
-  const actual = await getUserById('51');
+  await insertDocument({ connect: connect, user: document });
+  const actual = await getUserById({ connect: connect, id: '51'});
   t.deepEqual(actual, document);
 });
 
 test('deleteDocument should remove document', async t => {
+  const connect = await r.connect({ db: 'advancedtech' });
   const document = {
     'email':'handersonj@about.com','first_name':'Harry','gender':'Male','id':20,'last_name':'Anderson'
   };
-  await deleteDocument(document);
-  const actual = await getUserById('20');
+  await deleteDocument({ connect: connect, user: document });
+  const actual = await getUserById({ connect: connect, id: '20'});
   t.deepEqual(actual, undefined);
 });

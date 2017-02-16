@@ -27,7 +27,7 @@ db.dbActions()
     });
 
     /* Route back to home page. */
-    router.get('/user/:id', (req, res) => getUserById(req.params.id)
+    router.get('/user/:id', (req, res) => getUserById({ connect: null, id: req.params.id })
     .then((person) => {
       res.render('index', {
         users: JSON.stringify(person)

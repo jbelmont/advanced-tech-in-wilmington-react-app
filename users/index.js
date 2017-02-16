@@ -11,7 +11,7 @@ router.post('/addUser', (req, res) => {
   const {
     user
   } = req.body;
-  return insertDocument(user)
+  return insertDocument({ connect: null, user: user })
     .then(() => {
       res.send(user);
     })
