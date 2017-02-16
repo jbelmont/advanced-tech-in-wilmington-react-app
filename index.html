@@ -11,18 +11,119 @@
           <h4>Building and Testing ReactJS apps</h4>
           <p>Speaker Jean-Marcel Belmont</p>
           <p>Software Engineer at Genisys</p>
+          <p>Organizer of Code Craftsmanship Saturdays and Papers We Love Raleigh</p>
+          <p>Army Veteran and husband of 2 children</p>
         </section>
         <section data-background-iframe="https://giphy.com/embed/26FPy3QZQqGtDcrja">
-					<h2>JavaScript Ecosystem Appears like a Dumpster Fire</h2>
-          <p>It still is in some ways</p>
+					<h2>JavaScript Ecosystem is somewhat of a Dumpster Fire</h2>
 				</section>
         <section>
           <section>
-            <h4>Topic</h4>
+            <h3>FrontEnd Architecture: </h3>
+            <p>React.js</p>
+            <p>React Router</p>
+            <p>Redux</p>
+            <p>Sass</p>
           </section>
           <section>
-            <h4>Topic</h4>
+            <h3>BackEnd Architecture: </h3>
+            <p>Node.js</p>
+            <p>Express.js</p>
+            <p>RethinkDB</p>
+				  </section>
+        </section>
+        <section>
+          <h4>Development environment starts with the command npm run dev</h4>
+          <p>This npm script executes a gulp task that does a series of actions like linting, copying files and set watchers</p>
+          <p>It wraps server in nodemon process so that changes are automatically picked up by the server.</p>
+          <p>Webpack is also monitoring changes on the front end and will hot reload code changes</p>
+        </section>
+        <section>
+          <section>
+            <h5>This API for the FrontEnd and BackEnd was driven by Test-Driven Development (TDD)</h5>
+            <p>I am using several testing libraries avajs, jest, testdouble, supertest, and nock</p>
           </section>
+          <section>
+            <a href="https://facebook.github.io/jest/" target="_blank">Jest</a>
+            <p>Jest is a newer testing library created by facebook that has nice integration with React although it could be used outside of react.</p>
+            <p>Jest has this concept of snapshot testing.</p>
+            <p>I added both snapshot tests and traditional unit tests for the action creators and reducers.</p>
+          </section>
+          <section>
+            <a href="https://testanything.org/" target="_blank">TAP</a>
+            <h6>Avajs is based on the Test Anything Specification (TAP)</h6>
+            <p>TAP has a focus on simplicity and originally came from PERL but has since been ported to other Programming Languages.</p>
+          </section>
+          <section>
+            <h6>Mock Libraries:</h6>
+            <ul>
+              <li>TestDouble.js</li>
+              <li>Node Nock</li>
+            </ul>
+          </section>
+          <section>
+            <a href="https://github.com/testdouble/testdouble.js/" target="_blank">TestDouble</a>
+            <p>Testdoublejs is a mocking library like sinon.js but with a smaller api surface.</p>
+          </section>
+          <section>
+            <a href="https://github.com/node-nock/nock" target="_blank">NOCK</a>
+            <p>Nock is an HTTP mocking and expectations library for Node.js</p>
+            <p>Nock can be used to test modules that perform HTTP requests in isolation.</p>
+          </section>
+          <section>
+            <a href="https://github.com/visionmedia/supertest" target="_blank">SuperTest</a>
+            <p>Super-agent driven library for testing node.js HTTP servers using a fluent API</p>
+            <p>I am using Nock in conjunction with Supertest to both hit my api endpoints and mock out responses for the endpoints.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h6>Along with TDD should go the concept of Continuous Integration and Code Coverage IMO.</h6>
+          </section>
+          <section>
+            <p>I have a Travis CI Yaml Script</p>
+            <p>Additionally I have the code coverage tool called Coveralls hooked into Continuous Integration.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h6>Additionally Tools Used:</h6>
+            <ul>
+              <li>Dotenv</li>
+              <li>Eslint</li>
+            </ul>
+          </section>
+          <section>
+            <h6>You should never publish your API Secrets and tokens.</h6>
+            <p>I am using a small npm module called dotenv that reads into environment variables into process.env</p>
+          </section>
+          <section>
+            <p>Using a linting library like Eslint will help catch errors before they occur</p>
+            <p>They also help keep coding styles in sync in larger projects.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h6>Libraries for React.js:</h6>
+            <ul>
+              <li>React Router</li>
+              <li>Redux</li>
+            </ul>
+          </section>
+          <section>
+            <a href="http://redux.js.org/" target="_blank">Redux</a>
+            <p>Redux is a predictable state container for JavaScript apps.</p>
+            <p>The whole state of your app is stored in an object tree inside a single store.</p>
+            <p>The only way to change the state tree is to emit an action, an object describing what happened.</p>
+            <p>To specify how the actions transform the state tree, you write pure reducers.</p>
+          </section>
+          <section>
+            <a href="https://github.com/ReactTraining/react-router">React Router</a>
+            <p>React Router is a complete routing library for React.</p>
+          </section>
+        </section>
+        <section>
+          <h6>Code Exploration, Running Tests, and implement an action creator and a reducer.</h6>
         </section>
     </div>
     <script src="lib/js/head.min.js"></script>
