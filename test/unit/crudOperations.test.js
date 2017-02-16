@@ -9,7 +9,7 @@ const {
 const r = require('rethinkdb');
 
 const TEST_DATA = {
-  advancedtechtest: {
+  advancedtech: {
     users: [
       {'email':'handersonj@about.com','first_name':'Harry','gender':'Male','id':20,'last_name':'Anderson'},
       {'email':'dpayne3@cdbaby.com','first_name':'Donna','gender':'Female','id':4,'last_name':'Payne'},
@@ -37,7 +37,7 @@ test.before(
 test.after.always(cleanup);
 
 test('Documents should exist', async t => {
-  let conn = await r.connect({ db: 'advancedtechtest' });
+  let conn = await r.connect({ db: 'advancedtech' });
   let results = await r.table('users').run(conn);
   let data = await results.toArray();
   t.truthy(data);
@@ -51,7 +51,7 @@ test('getUserById should return a user', async t => {
   t.deepEqual(actual, expected);
 });
 
-test('insertDocument should a new document to users table', async t => {
+test('insertDocument should creat a new document to users table', async t => {
   const document = {
     'email':'johnrambo@badass.net','first_name':'John','gender':'Male','id': 51,'last_name':'Rambo'
   };
