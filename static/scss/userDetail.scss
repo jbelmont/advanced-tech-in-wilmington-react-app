@@ -1,0 +1,13 @@
+.user__details-container {
+  display: flex;
+  align-items: center;
+
+  &-email,
+  &-first-name,
+  &-last-name,
+  &-gender {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+  }
+}

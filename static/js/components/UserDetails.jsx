@@ -25,11 +25,11 @@ const UserDetails = () => {
   }
 
   const UserDetailsArea = (
-        <div className="user-details-container">
-            <span className="email">{email}</span>
-            <span className="first-name">{firstName}</span>
-            <span className="last-name">{lastName}</span>
-            <span className="gender">{gender}</span>
+        <div className="user__details-container">
+            <span className="user__details-container-email">{email}</span>
+            <span className="user__details-container-first-name">{firstName}</span>
+            <span className="user__details-container-last-name">{lastName}</span>
+            <span className="user__details-container-gender">{gender}</span>
         </div>
     );
   return (
