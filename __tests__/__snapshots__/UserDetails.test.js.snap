@@ -6,15 +6,15 @@ exports[`test Test the <UserDetails /> component 1`] = `
     <strong />
   </h2>
   <div
-    className="user-details-container">
+    className="user__details-container">
     <span
-      className="email" />
+      className="user__details-container-email" />
     <span
-      className="first-name" />
+      className="user__details-container-first-name" />
     <span
-      className="last-name" />
+      className="user__details-container-last-name" />
     <span
-      className="gender" />
+      className="user__details-container-gender" />
   </div>
 </div>
 `;

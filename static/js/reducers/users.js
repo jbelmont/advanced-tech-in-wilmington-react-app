@@ -5,6 +5,7 @@ function users(state = [], action) {
         firstName,
         lastName,
         gender,
+        index,
         id
     } = action;
   switch (type) {
@@ -18,6 +19,11 @@ function users(state = [], action) {
         gender,
         id
       }
+    ];
+  case 'REMOVE_USER':
+    return [
+      ...state.slice(0, index - 1),
+      ...state.slice(index, state.length)
     ];
   default:
     return state;

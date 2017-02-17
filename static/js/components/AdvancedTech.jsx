@@ -16,7 +16,8 @@ class AdvancedTech extends Component {
     users: PropTypes.array,
     getUserInfo: PropTypes.func,
     addUserInfo: PropTypes.func,
-    getusers: PropTypes.func
+    getusers: PropTypes.func,
+    removeUser: PropTypes.func
   };
 
   constructor(props) {
@@ -24,13 +25,21 @@ class AdvancedTech extends Component {
     this.state = {
       users: this.props.users,
       showAddPopDown: false,
-      genderValue: 'Male'
+      genderValue: 'Male',
+      trashBinSvgPath: './build/symbol-defs.svg#icon-bin'
     };
     this.togglePopDown = this.togglePopDown.bind(this);
     this.getValidationState = this.getValidationState.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.addUser = this.addUser.bind(this);
     this._generateAddUserRoute = this._generateAddUserRoute.bind(this);
+    this.removeUserAction = this.removeUserAction.bind(this);
+  }
+
+  removeUserAction(users) {
+    this.setState({
+      users
+    });
   }
 
   togglePopDown() {
@@ -149,7 +158,7 @@ class AdvancedTech extends Component {
     }
 
     const UserArea = (
-        users.map(info =>
+        users.map( (info, index) =>
             <Users  data-email={info['email']}
                     email={info['email']}
                     data-first-name={info['first_name']}
@@ -161,8 +170,11 @@ class AdvancedTech extends Component {
                     data-id={info['id']}
                     id={info['id']}
                     key={info['id']}
+                    index={index}
                     props={this.props}
-                    onClick={this.props.getUserInfo}
+                    trashBinSvgPath={this.state.trashBinSvgPath}
+                    store={store}
+                    onClick={[this.props.getUserInfo, this.props.removeUser, this.removeUserAction]}
             />
         )
     );

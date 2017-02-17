@@ -3,7 +3,8 @@ import * as constants from '../constants';
 const {
     GET_USERS,
     USER_DETAIL_INFO,
-    ADD_NEW_USER
+    ADD_NEW_USER,
+    REMOVE_USER
 } = constants;
 
 export function getusers({ users }) {
@@ -32,5 +33,12 @@ export function addUserInfo({ email, firstName, lastName, gender, id }) {
     lastName,
     gender,
     id
+  };
+}
+
+export function removeUser({ index }) {
+  return {
+    type: REMOVE_USER,
+    index
   };
 }

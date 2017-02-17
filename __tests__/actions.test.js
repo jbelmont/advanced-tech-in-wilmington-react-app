@@ -69,4 +69,10 @@ describe('Test Action Creators', () => {
     };
     expect(actions.addUserInfo(addUser)).toEqual(expectedAction);
   });
+
+  it('removeUser should remove a user from the store', () => {
+    const actual = actions.removeUser({ index: 1 });
+    const expected = { type: 'REMOVE_USER', index: 1 };
+    expect(actual).toEqual(expected);
+  });
 });
